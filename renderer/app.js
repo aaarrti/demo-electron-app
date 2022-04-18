@@ -41,7 +41,7 @@ addItem.addEventListener('click', e => {
 
 ipcRenderer.on('new-item-success', (e, newItem) => {
     console.log(newItem)
-    items.addItem(newItem)
+    items.addItem(newItem, true)
     toggleModalButton()
     modal.style.display = 'none'
     itemUrl.value = ''

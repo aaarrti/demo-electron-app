@@ -15,10 +15,12 @@ module.exports = (url, callback) => {
     offScreenWindow.loadURL(url)
     offScreenWindow.webContents.on('did-finish-load', e => {
         let title = offScreenWindow.getTitle()
-        offScreenWindow.webContents.capturePage().then(image => {
+        offScreenWindow.webContents.capturePage()
+            .then(image => {
                 let screenshot = image.toDataURL()
                 callback({title, screenshot, url})
             })
+            .catch(console.log)
         offScreenWindow.close()
         offScreenWindow = null
     })

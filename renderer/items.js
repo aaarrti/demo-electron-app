@@ -1,5 +1,7 @@
 let items = document.getElementById('items')
 
+exports.storage = JSON.parse(localStorage.getItem('readit-items')) || []
+
 exports.addItem = (item, isNew= false) => {
     let itemNode = document.createElement('div')
     itemNode.setAttribute('class', 'read-item')
@@ -11,10 +13,8 @@ exports.addItem = (item, isNew= false) => {
     }
 }
 
-exports.storage = JSON.parse(localStorage.getItem('readit-items')) || []
-
 exports.save = () => {
     localStorage.setItem('readit-items', JSON.stringify(this.storage))
 }
 
-//this.storage.forEach(this.addItem)
+this.storage.forEach(i => this.addItem(i, false))
