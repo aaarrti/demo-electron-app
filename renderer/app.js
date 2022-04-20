@@ -70,3 +70,24 @@ itemUrl.addEventListener('keyup', e => {
         addItem.click()
     }
 })
+
+ipcRenderer.on('menu-show-modal', () => {
+    showModal.click()
+})
+
+ipcRenderer.on('menu-read-item', () => {
+    items.openContent()
+})
+
+ipcRenderer.on('menu-delete-item', () => {
+    let selected  = items.getSelectedItem()
+    items.deleteItem(selected.index)
+})
+
+ipcRenderer.on('menu-open-item-native', () => {
+    items.openNative()
+})
+
+ipcRenderer.on('menu-search-items', () => {
+    search.focus()
+})

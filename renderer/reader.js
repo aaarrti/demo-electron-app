@@ -16,10 +16,9 @@ readitClose.style.zIndex = '9999'
 
 readitClose.onclick = e => {
     window.opener.postMessage({
-            action: 'delete-reader-item',
-            itemIndex: "{{index}}"
-        },
-        '*')
+        action: 'delete-reader-item',
+        itemIndex: "{{index}}"
+    }, '*')
 }
 
 document.getElementsByTagName('body')[0].append(readitClose)

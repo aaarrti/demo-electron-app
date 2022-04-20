@@ -1,6 +1,7 @@
 const {app, BrowserWindow, ipcMain} = require('electron')
 const windowStateKeeper = require('electron-window-state')
 const readItem = require('./readItem')
+const buildMenu = require('./menu')
 
 
 let mainWindow
@@ -23,7 +24,7 @@ function createWindow() {
         }
     })
 
-
+    buildMenu(mainWindow)
     mainWindow.loadFile('renderer/main.html')
     state.manage(mainWindow)
     mainWindow.webContents.openDevTools();
@@ -39,13 +40,8 @@ ipcMain.on('new-item', (e, itemUrl) => {
 
 // Electron `app` is ready
 app.on('ready', createWindow)
-
-// Quit when all windows are closed - (Not macOS - Darwin)
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') app.quit()
-})
-
-// When app icon is clicked and app is running, (macOS) recreate the BrowserWindow
 app.on('activate', () => {
-    if (mainWindow === null) createWindow()
+    if (mainWindow === null) {
+        createWindow()
+    }
 })

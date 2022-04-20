@@ -1,7 +1,6 @@
 {
-  "name": "master-electron-project",
-  "version": "1.0.0",
-  "description": "Master Electron Course Code",
+  "name": "readi-it",
+  "version": "0.0.1",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
