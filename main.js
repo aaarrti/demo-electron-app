@@ -27,7 +27,7 @@ function createWindow() {
 
     mainWindow.setTouchBar(touchBar)
     buildMenu(mainWindow)
-    mainWindow.loadFile('renderer/src.html')
+    mainWindow.loadFile('renderer/static/main.html')
     state.manage(mainWindow)
     //mainWindow.webContents.openDevTools();
     mainWindow.on('closed', () => mainWindow = null)
