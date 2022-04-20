@@ -1,8 +1,8 @@
 const {app, BrowserWindow, ipcMain} = require('electron')
 const windowStateKeeper = require('electron-window-state')
-const readItem = require('./readItem')
-const buildMenu = require('./menu')
-const touchBar = require('./touchbar')
+const readItem = require('./src/readItem')
+const buildMenu = require('./src/menu')
+const touchBar = require('./src/touchbar')
 
 
 let mainWindow
@@ -27,7 +27,7 @@ function createWindow() {
 
     mainWindow.setTouchBar(touchBar)
     buildMenu(mainWindow)
-    mainWindow.loadFile('renderer/main.html')
+    mainWindow.loadFile('renderer/src.html')
     state.manage(mainWindow)
     //mainWindow.webContents.openDevTools();
     mainWindow.on('closed', () => mainWindow = null)
